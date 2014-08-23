@@ -49,9 +49,11 @@
      <Compile Include="Assets\Scripts\CameraControl.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\LockRotation.cs" />
+     <Compile Include="Assets\Scripts\MouseHover.cs" />
      <Compile Include="Assets\Scripts\Orbit.cs" />
      <Compile Include="Assets\Scripts\OrbitPreview.cs" />
      <Compile Include="Assets\Scripts\Packet.cs" />
+     <Compile Include="Assets\Scripts\PathDrawer.cs" />
      <Compile Include="Assets\Scripts\Relay.cs" />
      <Compile Include="Assets\Scripts\Spin.cs" />
      <Compile Include="Assets\Scripts\Tower.cs" />

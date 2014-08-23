@@ -33,4 +33,13 @@ public class Orbit : MonoBehaviour {
             around.position.x + distance * Mathf.Cos(position), 
             around.position.y + distance * Mathf.Sin(position), 0f);
 	}
+
+    public Vector3 ExtraPolate(float time)
+    {
+        return new Vector3(
+            around.position.x + distance * Mathf.Cos(position + speed * time),
+            around.position.y + distance * Mathf.Sin(position + speed * time), 0f);
+    }
+
+
 }
