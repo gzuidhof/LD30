@@ -62,7 +62,7 @@ public class CameraControl : MonoBehaviour {
             Mathf.Lerp(rigidbody.velocity.y, velocity.y * dragSpeed, snappiness),
             Mathf.Lerp(rigidbody.velocity.z, z * scrollSpeed, zoomSnappiness));
 
-        if (transform.position.z > -2f && rigidbody.velocity.z > 0f)
+        if (transform.position.z > -1.6f && rigidbody.velocity.z > 0f)
         {
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, 0f);
         }
