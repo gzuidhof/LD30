@@ -25,8 +25,11 @@ public class Packet : MonoBehaviour {
     public float value;
 
 
+
+
 	// Use this for initialization
 	void Start () {
+        audio.pitch = 0.95f + Random.Range(0f, 0.1f);
 	}
 	
 	// Update is called once per frame

@@ -16,6 +16,16 @@ public class OrbitPreview : MonoBehaviour {
     void Start ()
     {
         instance = this;
+        DistributeNodes();
+
+        setSpeed(speed);
+        setDistance(2f);
+
+
+    }
+
+    private void DistributeNodes()
+    {
         int length = previewNodes.Length;
 
         for (int i = 0; i < length; i++)
@@ -23,12 +33,11 @@ public class OrbitPreview : MonoBehaviour {
             previewNodes[i].around = transform;
             previewNodes[i].position = ((float)i / (float)length) * 2f * Mathf.PI - Mathf.PI;
         }
-
-        setSpeed(speed);
-        setDistance(2f);
-
-
     }
+
+
+
+
 
 	// Update is called once per frame
 	void Update () {
@@ -70,7 +79,7 @@ public class OrbitPreview : MonoBehaviour {
         if (transform.parent == body) return;
         transform.parent = body;
         transform.position = body.position;
-
+        DistributeNodes();
         
         
 
@@ -78,11 +87,13 @@ public class OrbitPreview : MonoBehaviour {
 
     public IEnumerator startTrails()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.02f);
         foreach (Orbit o in previewNodes)
         {
             TrailRenderer tr = o.GetComponent<TrailRenderer>();
-            tr.time = 1f;
+            //tr.time = 1.5f;
+            tr.time = 1f/distance  / 4f;
+            //Debug.Log(tr.time);
         }
     }
 

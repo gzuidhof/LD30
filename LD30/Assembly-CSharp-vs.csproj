@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\LockRotation.cs" />
      <Compile Include="Assets\Scripts\MouseHover.cs" />
+     <Compile Include="Assets\Scripts\Music.cs" />
      <Compile Include="Assets\Scripts\Orbit.cs" />
      <Compile Include="Assets\Scripts\OrbitPreview.cs" />
      <Compile Include="Assets\Scripts\Packet.cs" />

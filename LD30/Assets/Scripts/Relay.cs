@@ -22,7 +22,10 @@ public class Relay : MonoBehaviour {
         else if (target == null)
             package.DestroyPackage();
         else
+        {
             package.target = target;
+            package.audio.Play();
+        }
 
     }
 
