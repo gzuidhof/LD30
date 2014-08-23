@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Packet : MonoBehaviour {
 
     /// <summary>
@@ -8,24 +9,38 @@ public class Packet : MonoBehaviour {
     /// </summary>
     public Relay destination;
 
-    public float speed;
+
+
+    public float speed = 1f;
+
 
     /// <summary>
     /// Current target
     /// </summary>
     public Relay target;
 
+    /// <summary>
+    /// Value if it arrives, deteriorates over time?
+    /// </summary>
     public float value;
 
 
 	// Use this for initialization
 	void Start () {
-	    
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+        rigidbody2D.velocity = (target.transform.position - transform.position).normalized * speed;
+
+        transform.LookAt(target.transform, Vector3.up);
+
+
+        if (Vector3.Distance(transform.position, target.transform.position) < 0.2f)
+        {
+            target.PacketArrive(this);
+        }
+
 	}
 
     /// <summary>

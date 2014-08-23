@@ -21,6 +21,12 @@ public class CameraControl : MonoBehaviour {
         solarPlane = new Plane(Vector3.zero, Vector3.up, Vector3.right);
 	}
 	
+
+    void LateUpdate()
+    {
+        camera.orthographicSize = Mathf.Abs(transform.position.z);
+    }
+
 	// Update is called once per frame
 	void FixedUpdate () {
 
@@ -55,6 +61,18 @@ public class CameraControl : MonoBehaviour {
             Mathf.Lerp(rigidbody.velocity.x, velocity.x * dragSpeed, snappiness), 
             Mathf.Lerp(rigidbody.velocity.y, velocity.y * dragSpeed, snappiness),
             Mathf.Lerp(rigidbody.velocity.z, z * scrollSpeed, zoomSnappiness));
+
+        if (transform.position.z > -2f && rigidbody.velocity.z > 0f)
+        {
+            rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, 0f);
+        }
+        if (transform.position.z > -1f)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
+        }
+
+
+
         lastZoom = z;
 	}
 }
