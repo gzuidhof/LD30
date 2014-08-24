@@ -5,16 +5,23 @@ public class SpawnFromHere : MonoBehaviour {
 
     public Relay[] target;
 
-    public float delay = 8f;
+    public float delay = 5f;
+    public int amountLeft;
 
 
 	// Use this for initialization
 	void Start () {
-        InvokeRepeating("Spawn", delay, delay);
+        GameManager.AnnounceSpawn(amountLeft);
+        if (amountLeft > 0)
+            Invoke("Spawn", delay);
 	}
 	
 	void Spawn()
     {
         PacketSpawner.instance.SpawnPackage(this.GetComponent<Relay>(), target[Random.Range(0, target.Length)]);
+        amountLeft--;
+        if (amountLeft > 0)
+            Invoke("Spawn", delay);
+        
     }
 }

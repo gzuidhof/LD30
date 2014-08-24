@@ -36,7 +36,7 @@ public class BuySattelitePreview : MonoBehaviour {
         orbit.initPosition();
         orbit.speed = 0f;
 
-        if (around.isInRange(transform.position))
+        if (around.isInRange(transform.position) && GameManager.instance.level.satteliteCount > 0)
         {
             renderer.material.color = Color.white;
             isValid = true;

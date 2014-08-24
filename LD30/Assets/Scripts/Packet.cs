@@ -56,6 +56,7 @@ public class Packet : MonoBehaviour {
     /// </summary>
     public void DestroyPackage()
     {
+        GameManager.PackageLoss();
         GameObject expl = (GameObject)GameObject.Instantiate(explosion, transform.position + new Vector3(0f,0f,-0.1f), Quaternion.identity);
         expl.rigidbody.velocity = rigidbody2D.velocity;
         expl.particleSystem.startColor = this.color;

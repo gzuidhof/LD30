@@ -59,6 +59,7 @@ public class PacketSpawner : MonoBehaviour {
 
     public void SpawnPackage(Relay from, Relay destination = null)
     {
+        GameManager.SendPackage();
         GameObject pack = (GameObject)GameObject.Instantiate(packagePrefab, from.transform.position, Quaternion.identity);
         Packet p = pack.GetComponent<Packet>();
         if (destination == null)
