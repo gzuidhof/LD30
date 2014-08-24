@@ -8,9 +8,24 @@ public class GameManager : MonoBehaviour {
     public GameObject sattelitePrefab;
     public GameObject successPrefab;
 
+    void Awake()
+    {
+        if (Relay.destinations == null) return;
+        for (int i = 0; i < Relay.destinations.Count; i++)
+        {
+            if (!Relay.destinations[i])
+            {
+                Relay.destinations.Remove(Relay.destinations[i]);
+                i--;
+            }
+
+        }
+    }
+
 	// Use this for initialization
 	void Start () {
         instance = this;
+
 
 	}
 	

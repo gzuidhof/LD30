@@ -32,7 +32,7 @@ public class Packet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        audio.pitch = 0.95f + Random.Range(0f, 0.1f);
+        audio.pitch = 0.925f + Random.Range(0f, 0.15f);
         SetColor(destination.color);
 	}
 

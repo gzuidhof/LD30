@@ -60,7 +60,6 @@ public class CameraControl : MonoBehaviour {
         }
 
         float z = Input.GetAxis("Mouse ScrollWheel");
-        Debug.Log(z);
         z = Mathf.Clamp(z, -0.25f, 0.25f);
         z = Mathf.Lerp(lastZoom, z, Time.deltaTime * zoomSustain);
 

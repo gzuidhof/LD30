@@ -17,6 +17,10 @@ public class MouseHover : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         line = GetComponent<LineRenderer>();
+        if (!highlightRelay)
+            highlightRelay = transform.FindChild("HighlightRelay").gameObject;
+        if (!highlightTarget)
+            highlightTarget = transform.FindChild("HighlightTarget").gameObject;
 	}
 	
 	// Update is called once per frame
@@ -99,18 +103,20 @@ public class MouseHover : MonoBehaviour {
             GameManager.instance.BuySattelite();
             BuySattelitePreview.instance.gameObject.SetActive(false);
         }
-
-
-        if (Input.GetKeyUp(KeyCode.Mouse0) && hit.collider)
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             mouseClaim = false;
-            if (relay && relay != from)
+            if (hit.collider)
             {
-                from.target = relay;
+                if (relay && relay != from)
+                {
+                    from.target = relay;
+                }
+                
             }
-
             from = null;
         }
+
 
         if (from)
         {

@@ -14,6 +14,7 @@ public class Relay : MonoBehaviour {
     private static List<Relay> relays = new List<Relay>();
 
 	void Awake () {
+
         if (Relay.destinations == null)
             Relay.destinations = new List<Relay>();
 
