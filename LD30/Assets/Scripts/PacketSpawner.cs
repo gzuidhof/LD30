@@ -9,9 +9,16 @@ public class PacketSpawner : MonoBehaviour {
     public float spawnInterval = 6f;
     public float spawnIntervalReduction = 0.005f;
 
+    public static PacketSpawner instance;
+
+
+    public bool spawn = true;
+
 	// Use this for initialization
 	void Start () {
-        Invoke("AttemptSpawn", spawnInterval);
+        instance = this;
+        if(spawn)
+            Invoke("AttemptSpawn", spawnInterval);
 	}
 
     void AttemptSpawn()
@@ -50,11 +57,14 @@ public class PacketSpawner : MonoBehaviour {
 
     }
 
-    void SpawnPackage(Relay from)
+    public void SpawnPackage(Relay from, Relay destination = null)
     {
         GameObject pack = (GameObject)GameObject.Instantiate(packagePrefab, from.transform.position, Quaternion.identity);
         Packet p = pack.GetComponent<Packet>();
-        p.destination = Relay.destinations[Random.Range(0, Relay.destinations.Count)];
+        if (destination == null)
+            p.destination = Relay.destinations[Random.Range(0, Relay.destinations.Count)];
+        else
+            p.destination = destination;
         p.target = from.target;
         p.SetColor(p.destination.color);
     }

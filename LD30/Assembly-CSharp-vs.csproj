@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\CameraControl.cs" />
      <Compile Include="Assets\Scripts\ColorUtil.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Hud.cs" />
      <Compile Include="Assets\Scripts\LockRotation.cs" />
      <Compile Include="Assets\Scripts\MouseHover.cs" />
      <Compile Include="Assets\Scripts\Music.cs" />
@@ -61,6 +62,8 @@
      <Compile Include="Assets\Scripts\Planet.cs" />
      <Compile Include="Assets\Scripts\Relay.cs" />
      <Compile Include="Assets\Scripts\Scale.cs" />
+     <Compile Include="Assets\Scripts\SceneSwitchButton.cs" />
+     <Compile Include="Assets\Scripts\SpawnFromHere.cs" />
      <Compile Include="Assets\Scripts\Spin.cs" />
      <Compile Include="Assets\Scripts\Tower.cs" />
   </ItemGroup>
