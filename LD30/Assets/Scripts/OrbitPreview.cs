@@ -50,7 +50,7 @@ public class OrbitPreview : MonoBehaviour {
 
         foreach (Orbit n in previewNodes)
         {
-            n.speed = speed * 3f;
+            n.speed = speed > 0 ? 0.30f : -0.30f;
         }
     }
 
@@ -92,7 +92,7 @@ public class OrbitPreview : MonoBehaviour {
         {
             TrailRenderer tr = o.GetComponent<TrailRenderer>();
             //tr.time = 1.5f;
-            tr.time = 1f/distance  / 4f;
+            tr.time = 1.5f;
             //Debug.Log(tr.time);
         }
     }

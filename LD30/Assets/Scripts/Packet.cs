@@ -24,16 +24,21 @@ public class Packet : MonoBehaviour {
     /// </summary>
     public float value;
 
+    public GameObject explosion;
+
+    public Color color = Color.white;
 
 
 
 	// Use this for initialization
 	void Start () {
         audio.pitch = 0.95f + Random.Range(0f, 0.1f);
+        SetColor(destination.color);
 	}
-	
+
+
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         rigidbody2D.velocity = (target.transform.position - transform.position).normalized * speed;
 
         transform.LookAt(target.transform, Vector3.up);
@@ -51,7 +56,24 @@ public class Packet : MonoBehaviour {
     /// </summary>
     public void DestroyPackage()
     {
+        GameObject expl = (GameObject)GameObject.Instantiate(explosion, transform.position + new Vector3(0f,0f,-0.1f), Quaternion.identity);
+        expl.rigidbody.velocity = rigidbody2D.velocity;
+        expl.particleSystem.startColor = this.color;
+        Destroy(this.gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        DestroyPackage();
+    }
+
+    public void SetColor(Color color)
+    {
+        this.color = color;
+        TrailRenderer rend = GetComponent<TrailRenderer>();
+        rend.material.color =  color;
 
     }
+
 
 }

@@ -16,9 +16,12 @@ public class CameraControl : MonoBehaviour {
     public float zoomSustain = 100f;
 
 
+    private MouseHover mouse;
+
 	// Use this for initialization
 	void Start () {
         solarPlane = new Plane(Vector3.zero, Vector3.up, Vector3.right);
+        mouse = GetComponent<MouseHover>();
 	}
 	
 
@@ -34,7 +37,8 @@ public class CameraControl : MonoBehaviour {
         Vector3 velocity = Vector3.zero;
 
         //Drag
-        if (Input.GetKey(KeyCode.Mouse0)) {
+        if ((Input.GetKey(KeyCode.Mouse0) && !mouse.mouseClaim) || Input.GetKey(KeyCode.Mouse2))
+        {
             //Raycast into plane that makes up the solar platter
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             float dist;

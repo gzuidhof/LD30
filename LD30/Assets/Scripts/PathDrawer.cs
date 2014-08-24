@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Draws the little orbs flying from one relay to another
+/// </summary>
 public class PathDrawer : MonoBehaviour {
 
 
