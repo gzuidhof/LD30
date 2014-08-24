@@ -11,9 +11,25 @@ public class Relay : MonoBehaviour {
     public Renderer rendererToColor;
     public Color color;
 
+    private static List<Relay> relays = new List<Relay>();
+
 	void Awake () {
         if (Relay.destinations == null)
             Relay.destinations = new List<Relay>();
+
+
+        if (target == null)
+        {
+            target = GetClosestRelay();
+        }
+
+        if (GetComponent<Orbit>() && GetComponent<Orbit>().around)
+        {
+            GameManager.SetRealisticSpeed(gameObject);
+        }
+
+
+        relays.Add(this);
 
         if(isDestination)
         {
@@ -21,6 +37,20 @@ public class Relay : MonoBehaviour {
         }
 	}
 	
+    private Relay GetClosestRelay()
+    {
+
+        Relay closest = null;
+        foreach (var rel in relays)
+        {
+            if (closest == null || Vector3.Distance(transform.position, rel.transform.position) < Vector3.Distance(transform.position, closest.transform.position))
+                closest = rel;
+        }
+        return closest;
+    }
+
+
+
 	// Update is called once per frame
 	void Update () {
 	

@@ -32,6 +32,15 @@ public class GameManager : MonoBehaviour {
 
         GameObject sat = (GameObject)GameObject.Instantiate(sattelitePrefab, p.transform.position, Quaternion.identity);
         sat.GetComponent<Orbit>().around = p.around.transform;
+        SetRealisticSpeed(sat);
+
+    }
+
+    public static void SetRealisticSpeed(GameObject sat)
+    {
+        Vector3 extraP = sat.GetComponent<Orbit>().ExtraPolate(1f);
+        float dist = Vector3.Distance(sat.transform.position, extraP);
+        sat.GetComponent<Orbit>().speed = sat.GetComponent<Orbit>().speed * 30f / (dist * dist);
     }
 
 
