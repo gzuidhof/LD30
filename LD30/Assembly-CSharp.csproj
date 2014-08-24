@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Scale.cs" />
      <Compile Include="Assets\Scripts\SceneSwitchButton.cs" />
      <Compile Include="Assets\Scripts\SpawnFromHere.cs" />
+     <Compile Include="Assets\Scripts\SpeedManipulation.cs" />
      <Compile Include="Assets\Scripts\Spin.cs" />
      <Compile Include="Assets\Scripts\Tower.cs" />
   </ItemGroup>
