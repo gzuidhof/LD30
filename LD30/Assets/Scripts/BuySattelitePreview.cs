@@ -21,7 +21,12 @@ public class BuySattelitePreview : MonoBehaviour {
         
         gameObject.SetActive(false);
 	}
-	
+
+    void OnEnable()
+    {
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, Random.Range(0f, 360f)));
+    }
+
 	// Update is called once per frame
 	void Update () {
         this.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0f, 0f, -Camera.main.ScreenToWorldPoint(Input.mousePosition).z); ;

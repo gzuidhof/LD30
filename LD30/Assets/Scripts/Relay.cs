@@ -20,7 +20,7 @@ public class Relay : MonoBehaviour {
 
         if (target == null)
         {
-            target = GetClosestRelay();
+            //target = GetClosestRelay();
         }
 
         if (GetComponent<Orbit>() && GetComponent<Orbit>().around)
@@ -33,6 +33,7 @@ public class Relay : MonoBehaviour {
 
         if(isDestination)
         {
+            GameManager.RegisterDestination(this);
             destinations.Add(this);
         }
 	}
@@ -59,9 +60,12 @@ public class Relay : MonoBehaviour {
     public void PacketArrive(Packet package)
     {
         if (package.destination == this)
-            ;//Do something
+            GameManager.instance.Score(package);
         else if (target == null)
+        {
+            Debug.Log("Destroying package, because target is null");
             package.DestroyPackage();
+        }
         else
         {
             package.target = target;

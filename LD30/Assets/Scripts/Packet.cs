@@ -60,11 +60,15 @@ public class Packet : MonoBehaviour {
         expl.rigidbody.velocity = rigidbody2D.velocity;
         expl.particleSystem.startColor = this.color;
         Destroy(this.gameObject);
+
+        Destroy(expl, 8f);
+
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        DestroyPackage();
+        if (coll.transform.CompareTag("Planet"))
+            DestroyPackage();
     }
 
     public void SetColor(Color color)

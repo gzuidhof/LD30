@@ -6,17 +6,11 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     public GameObject sattelitePrefab;
-
+    public GameObject successPrefab;
 
 	// Use this for initialization
 	void Start () {
         instance = this;
-
-        foreach (var dest in Relay.destinations)
-        {
-            Debug.Log("awroo");
-            dest.SetColor(ColorUtil.GenerateGoldenRatioColor());
-        }
 
 	}
 	
@@ -25,12 +19,22 @@ public class GameManager : MonoBehaviour {
 	    
 	}
 
+    public void Score(Packet p)
+    {
+        GameObject suc = (GameObject) GameObject.Instantiate(successPrefab, p.transform.position, Quaternion.identity);
+        suc.GetComponent<ParticleSystem>().startColor = p.color;
+        suc.audio.pitch = p.audio.pitch;
+        Destroy(p.gameObject);
+        Destroy(suc.gameObject, 10f);
+    }
+
+
     public void BuySattelite()
     {
         BuySattelitePreview p = BuySattelitePreview.instance;
         if (!p.isValid) return;
 
-        GameObject sat = (GameObject)GameObject.Instantiate(sattelitePrefab, p.transform.position, Quaternion.identity);
+        GameObject sat = (GameObject)GameObject.Instantiate(sattelitePrefab, p.transform.position, p.transform.rotation);
         sat.GetComponent<Orbit>().around = p.around.transform;
         SetRealisticSpeed(sat);
 
@@ -44,4 +48,9 @@ public class GameManager : MonoBehaviour {
     }
 
 
+
+    internal static void RegisterDestination(Relay relay)
+    {
+        relay.SetColor(ColorUtil.GenerateGoldenRatioColor());
+    }
 }
