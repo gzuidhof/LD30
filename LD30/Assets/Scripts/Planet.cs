@@ -25,8 +25,8 @@ public class Planet : MonoBehaviour {
 
     public bool isInRange(Vector3 position)
     {
-        return Vector3.Distance(position, transform.position) < radius + radius * 15f 
-            && Vector3.Distance(position, transform.position) > radius*1.25f
+        return Vector3.Distance(position, transform.position) < radius * transform.localScale.x + radius * transform.localScale.x * 15f
+            && Vector3.Distance(position, transform.position) > radius * transform.localScale.x * 1.25f
                 && (GetComponent<Orbit>() ? Vector3.Distance(position, transform.position) < GetComponent<Orbit>().distance * 0.50f : true);
     }
 
