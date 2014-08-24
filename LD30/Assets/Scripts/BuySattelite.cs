@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PacketSpawner : MonoBehaviour {
-
-
-
+public class BuySattelite : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +10,6 @@ public class PacketSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
 }

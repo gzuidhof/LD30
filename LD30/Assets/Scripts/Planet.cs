@@ -6,6 +6,8 @@ public class Planet : MonoBehaviour {
 
     public static List<Planet> planets = new List<Planet>();
 
+    public float radius = 1f;
+
     void Awake()
     {
         planets.Add(this);
@@ -20,4 +22,12 @@ public class Planet : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public bool isInRange(Vector3 position)
+    {
+        return Vector3.Distance(position, transform.position) < radius + radius * 15f 
+            && Vector3.Distance(position, transform.position) > radius*1.25f
+                && (GetComponent<Orbit>() ? Vector3.Distance(position, transform.position) < GetComponent<Orbit>().distance * 0.50f : true);
+    }
+
 }

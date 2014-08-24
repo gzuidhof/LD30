@@ -22,6 +22,18 @@ public class MouseHover : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        bool previewInUse = false;
+        if (BuySattelitePreview.instance.gameObject.activeSelf)
+        {
+            Orbit orbit = BuySattelitePreview.instance.GetComponent<Orbit>();
+            OrbitPreview.instance.setAroundBody(orbit.around);
+            OrbitPreview.instance.setSpeed(orbit.speed);
+            OrbitPreview.instance.setDistance(orbit.distance);
+            previewInUse = true;
+        }
+
+
+
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.zero);
         Relay relay = null;
         if (hit.collider)
@@ -46,10 +58,20 @@ public class MouseHover : MonoBehaviour {
                 highlightTarget.SetActive(false);
             }
 
+            if (hit.collider.gameObject.tag == "Planet" && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                BuySattelitePreview.instance.gameObject.SetActive(true);
+                BuySattelitePreview.instance.around = hit.collider.GetComponent<Planet>();
+            }
+
+
             relay = GetRelay(hit.collider.gameObject);
 
             Orbit orbit = hit.collider.gameObject.GetComponent<Orbit>();
-            if (orbit && !from)
+
+
+
+            if (orbit && !from && !previewInUse)
             {
                 OrbitPreview.instance.setAroundBody(orbit.around);
                 OrbitPreview.instance.setSpeed(orbit.speed);
@@ -58,11 +80,11 @@ public class MouseHover : MonoBehaviour {
 
 
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) && relay)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && relay || BuySattelitePreview.instance.gameObject.activeSelf)
             {
-
                 mouseClaim = true;
-                from = relay;
+                if (relay && !BuySattelitePreview.instance.gameObject.activeSelf)
+                    from = relay;
             }
 
         }
@@ -72,6 +94,13 @@ public class MouseHover : MonoBehaviour {
             highlightTarget.SetActive(false);
         }
 
+        if (Input.GetKeyUp(KeyCode.Mouse0) && BuySattelitePreview.instance.gameObject.activeSelf)
+        {
+            GameManager.instance.BuySattelite();
+            BuySattelitePreview.instance.gameObject.SetActive(false);
+        }
+
+
         if (Input.GetKeyUp(KeyCode.Mouse0) && hit.collider)
         {
             mouseClaim = false;
@@ -79,6 +108,7 @@ public class MouseHover : MonoBehaviour {
             {
                 from.target = relay;
             }
+
             from = null;
         }
 

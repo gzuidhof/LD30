@@ -21,4 +21,11 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 	    
 	}
+
+    public void BuySattelite()
+    {
+        BuySattelitePreview p = BuySattelitePreview.instance;
+    }
+
+
 }

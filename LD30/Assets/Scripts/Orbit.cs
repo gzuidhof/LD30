@@ -41,5 +41,11 @@ public class Orbit : MonoBehaviour {
             around.position.y + distance * Mathf.Sin(position + speed * time), 0f);
     }
 
+    public void initPosition()
+    {
+        position = Mathf.Atan2(
+                transform.position.y - around.position.y,
+                transform.position.x - around.position.x);
+    }
 
 }

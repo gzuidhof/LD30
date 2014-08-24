@@ -50,7 +50,7 @@ public class OrbitPreview : MonoBehaviour {
 
         foreach (Orbit n in previewNodes)
         {
-            n.speed = speed > 0 ? 0.30f : -0.30f;
+            n.speed = speed >= 0f ? 0.30f : -0.30f;
         }
     }
 
