@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Planet.cs" />
      <Compile Include="Assets\Scripts\CameraControl.cs" />
      <Compile Include="Assets\Scripts\ColorUtil.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -56,7 +55,9 @@
      <Compile Include="Assets\Scripts\Orbit.cs" />
      <Compile Include="Assets\Scripts\OrbitPreview.cs" />
      <Compile Include="Assets\Scripts\Packet.cs" />
+     <Compile Include="Assets\Scripts\PacketSpawner.cs" />
      <Compile Include="Assets\Scripts\PathDrawer.cs" />
+     <Compile Include="Assets\Scripts\Planet.cs" />
      <Compile Include="Assets\Scripts\Relay.cs" />
      <Compile Include="Assets\Scripts\Scale.cs" />
      <Compile Include="Assets\Scripts\Spin.cs" />

@@ -35,9 +35,11 @@ public class CameraControl : MonoBehaviour {
 
 
         Vector3 velocity = Vector3.zero;
-
+        bool mouseAvailable = true;
+        if (mouse)
+            mouseAvailable = !mouse.mouseClaim;
         //Drag
-        if ((Input.GetKey(KeyCode.Mouse0) && !mouse.mouseClaim) || Input.GetKey(KeyCode.Mouse2))
+        if ((Input.GetKey(KeyCode.Mouse0) && mouseAvailable) || Input.GetKey(KeyCode.Mouse2))
         {
             //Raycast into plane that makes up the solar platter
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

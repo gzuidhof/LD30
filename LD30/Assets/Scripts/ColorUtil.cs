@@ -16,7 +16,7 @@ class ColorUtil
         h += goldenRatio;
         h %= 1;
         int r, g, b;
-        HsvToRgb(h*360, 0.95f, 0.92f, out r, out g, out b);
+        HsvToRgb(h*360, 0.97f, 0.99f, out r, out g, out b);
         return new Color((float)r / 255f, (float)g / 255f, (float)b / 255f);
     }
 

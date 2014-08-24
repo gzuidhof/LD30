@@ -9,6 +9,9 @@ public class Scale : MonoBehaviour {
     public float scaleMin = 1f;
 
     public bool direction;
+    public Vector3 startScale = Vector3.one;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +20,7 @@ public class Scale : MonoBehaviour {
 	
     void OnEnable()
     {
-        transform.localScale = Vector3.one;
+        transform.localScale = startScale;
     }
 
 
