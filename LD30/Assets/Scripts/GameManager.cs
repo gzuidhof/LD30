@@ -5,6 +5,9 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
 
+    public GameObject sattelitePrefab;
+
+
 	// Use this for initialization
 	void Start () {
         instance = this;
@@ -25,6 +28,10 @@ public class GameManager : MonoBehaviour {
     public void BuySattelite()
     {
         BuySattelitePreview p = BuySattelitePreview.instance;
+        if (!p.isValid) return;
+
+        GameObject sat = (GameObject)GameObject.Instantiate(sattelitePrefab, p.transform.position, Quaternion.identity);
+        sat.GetComponent<Orbit>().around = p.around.transform;
     }
 
 

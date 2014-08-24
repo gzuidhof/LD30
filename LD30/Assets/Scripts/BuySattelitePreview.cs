@@ -7,7 +7,7 @@ public class BuySattelitePreview : MonoBehaviour {
     public Orbit orbit;
     public static BuySattelitePreview instance;
     public Planet around;
-    protected bool isValid = false;
+    public bool isValid = false;
 
 
     void Awake()

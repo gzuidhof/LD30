@@ -21,9 +21,12 @@ public class PathDrawer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (relay.target == null)
+        {
+            system.Stop();
+            return;
+        }
         Transform target = relay.target.transform;
-        if (target == null ) return;
-
 
         if (target != prevTarget)
         {
