@@ -39,6 +39,8 @@ public class Packet : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
+
+
         rigidbody2D.velocity = (target.transform.position - transform.position).normalized * speed;
 
         transform.LookAt(target.transform, Vector3.up);

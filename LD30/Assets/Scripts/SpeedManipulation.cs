@@ -23,6 +23,9 @@ public class SpeedManipulation : MonoBehaviour {
             Time.timeScale -= 0.1f;
         }
 
+        Time.timeScale = Mathf.Clamp(Time.timeScale, 0.5f, 1.8f);
+
+
         textMesh.text = "TIMESCALE " + ((int)(Time.timeScale * 100f));
 
 	}
