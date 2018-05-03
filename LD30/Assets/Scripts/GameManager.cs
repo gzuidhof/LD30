@@ -20,11 +20,11 @@ public class LevelSettings
 
     public void init()
     {
-        sat = Camera.main.transform.FindChild("sat").GetComponent<TextMesh>();
-        loss = Camera.main.transform.FindChild("loss").GetComponent<TextMesh>();
-        sent = Camera.main.transform.FindChild("sent").GetComponent<TextMesh>();
-        unsent = Camera.main.transform.FindChild("unsent").GetComponent<TextMesh>();
-        obj = Camera.main.transform.FindChild("obj").GetComponent<TextMesh>();
+        sat = Camera.main.transform.Find("sat").GetComponent<TextMesh>();
+        loss = Camera.main.transform.Find("loss").GetComponent<TextMesh>();
+        sent = Camera.main.transform.Find("sent").GetComponent<TextMesh>();
+        unsent = Camera.main.transform.Find("unsent").GetComponent<TextMesh>();
+        obj = Camera.main.transform.Find("obj").GetComponent<TextMesh>();
         obj.text = "Messages Delivered = " + packageDelivered + " out of " + collectPackages;
     }
 
@@ -70,9 +70,9 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        finishedEnable = Camera.main.transform.FindChild("LevelCompleted").gameObject;
+        finishedEnable = Camera.main.transform.Find("LevelCompleted").gameObject;
         level.sat.text = "Satellites = " + level.satteliteCount;
-        failedEnable = Camera.main.transform.FindChild("LevelFailed").gameObject;
+        failedEnable = Camera.main.transform.Find("LevelFailed").gameObject;
 
 	}
 
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour {
     {
         GameObject suc = (GameObject) GameObject.Instantiate(successPrefab, p.transform.position, Quaternion.identity);
         suc.GetComponent<ParticleSystem>().startColor = p.color;
-        suc.audio.pitch = p.audio.pitch;
+        suc.GetComponent<AudioSource>().pitch = p.GetComponent<AudioSource>().pitch;
         Destroy(p.gameObject);
         Destroy(suc.gameObject, 10f);
         level.packageDelivered++;

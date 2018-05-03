@@ -37,7 +37,7 @@ public class Music : MonoBehaviour {
 
         current = nextSong;
         current.SetActive(true);
-        float songLength = current.audio.clip.length;
+        float songLength = current.GetComponent<AudioSource>().clip.length;
         Invoke("PlayNextSong", songLength + GetInterval());
 
     }

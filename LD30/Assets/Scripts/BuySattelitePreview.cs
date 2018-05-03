@@ -38,12 +38,12 @@ public class BuySattelitePreview : MonoBehaviour {
 
         if (around.isInRange(transform.position) && GameManager.instance.level.satteliteCount > 0)
         {
-            renderer.material.color = Color.white;
+            GetComponent<Renderer>().material.color = Color.white;
             isValid = true;
         }
         else
         {
-            renderer.material.color = Color.red;
+            GetComponent<Renderer>().material.color = Color.red;
             isValid = false;
         }
 

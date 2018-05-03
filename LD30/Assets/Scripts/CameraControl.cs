@@ -27,7 +27,7 @@ public class CameraControl : MonoBehaviour {
 
     void LateUpdate()
     {
-        camera.orthographicSize = Mathf.Abs(transform.position.z);
+        GetComponent<Camera>().orthographicSize = Mathf.Abs(transform.position.z);
     }
 
 	// Update is called once per frame
@@ -60,18 +60,18 @@ public class CameraControl : MonoBehaviour {
         }
 
         float z = Input.GetAxis("Mouse ScrollWheel");
-        z = Mathf.Clamp(z, -0.25f, 0.25f);
+        z = Mathf.Clamp(z, -0.1f, 0.1f);
         z = Mathf.Lerp(lastZoom, z, Time.deltaTime * zoomSustain);
 
 
-        rigidbody.velocity = new Vector3(
-            Mathf.Lerp(rigidbody.velocity.x, velocity.x * dragSpeed, snappiness), 
-            Mathf.Lerp(rigidbody.velocity.y, velocity.y * dragSpeed, snappiness),
-            Mathf.Lerp(rigidbody.velocity.z, z * scrollSpeed, zoomSnappiness));
+        GetComponent<Rigidbody>().velocity = new Vector3(
+            Mathf.Lerp(GetComponent<Rigidbody>().velocity.x, velocity.x * dragSpeed, snappiness), 
+            Mathf.Lerp(GetComponent<Rigidbody>().velocity.y, velocity.y * dragSpeed, snappiness),
+            Mathf.Lerp(GetComponent<Rigidbody>().velocity.z, z * scrollSpeed, zoomSnappiness));
 
-        if (transform.position.z > -1.6f && rigidbody.velocity.z > 0f)
+        if (transform.position.z > -1.6f && GetComponent<Rigidbody>().velocity.z > 0f)
         {
-            rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, 0f);
+            GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, 0f);
         }
         if (transform.position.z > -1f)
         {

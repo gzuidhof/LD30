@@ -32,7 +32,7 @@ public class Packet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        audio.pitch = 0.925f + Random.Range(0f, 0.15f);
+        GetComponent<AudioSource>().pitch = 0.925f + Random.Range(0f, 0.15f);
         SetColor(destination.color);
 	}
 
@@ -41,7 +41,7 @@ public class Packet : MonoBehaviour {
 	void FixedUpdate () {
 
 
-        rigidbody2D.velocity = (target.transform.position - transform.position).normalized * speed;
+        GetComponent<Rigidbody2D>().velocity = (target.transform.position - transform.position).normalized * speed;
 
         transform.LookAt(target.transform, Vector3.up);
 
@@ -60,8 +60,8 @@ public class Packet : MonoBehaviour {
     {
         GameManager.PackageLoss();
         GameObject expl = (GameObject)GameObject.Instantiate(explosion, transform.position + new Vector3(0f,0f,-0.1f), Quaternion.identity);
-        expl.rigidbody.velocity = rigidbody2D.velocity;
-        expl.particleSystem.startColor = this.color;
+        expl.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody2D>().velocity;
+        expl.GetComponent<ParticleSystem>().startColor = this.color;
         Destroy(this.gameObject);
 
         Destroy(expl, 8f);

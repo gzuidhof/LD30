@@ -18,9 +18,9 @@ public class MouseHover : MonoBehaviour {
 	void Start () {
         line = GetComponent<LineRenderer>();
         if (!highlightRelay)
-            highlightRelay = transform.FindChild("HighlightRelay").gameObject;
+            highlightRelay = transform.Find("HighlightRelay").gameObject;
         if (!highlightTarget)
-            highlightTarget = transform.FindChild("HighlightTarget").gameObject;
+            highlightTarget = transform.Find("HighlightTarget").gameObject;
 	}
 	
 	// Update is called once per frame
@@ -54,7 +54,7 @@ public class MouseHover : MonoBehaviour {
                 Packet hoverPackage = hit.collider.transform.root.GetComponent<Packet>();
 
                 highlightTarget.transform.position = hoverPackage.destination.transform.position;
-                highlightTarget.renderer.material.color = hoverPackage.color;
+                highlightTarget.GetComponent<Renderer>().material.color = hoverPackage.color;
             }
             else
             {

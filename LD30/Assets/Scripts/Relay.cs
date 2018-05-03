@@ -70,7 +70,7 @@ public class Relay : MonoBehaviour {
         else
         {
             package.target = target;
-            package.audio.Play();
+            package.GetComponent<AudioSource>().Play();
         }
 
     }
