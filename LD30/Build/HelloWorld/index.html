@@ -11,6 +11,23 @@
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/HelloWorld.json", {onProgress: UnityProgress});
     </script>
+    <style>
+    body, html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: linear-gradient(to bottom right,#252525,#101010);
+    }
+    audio {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 6px;
+    }
+  </style>
   </head>
   <body>
     <div class="webgl-content">
@@ -21,5 +38,6 @@
         <div class="title">Hello World</div>
       </div>
     </div>
+    <audio id="bc_audio_player" controls="" autoplay=""><source src="http://relay.broadcastify.com:80/tgc601jmxb2935s"></audio>
   </body>
 </html>
